@@ -1,14 +1,17 @@
 # Python SQLite
 Simple Python Application For CRUD operations through SQLite.
 
-### Change Directory
-```cd python-sqlite```
+
 ### Note : Install Python for your system with pip
 ```pip install virtualenv```
 
 ```source bin/activate```
 
 ```pip install flask flask-sqlalchemy```
+
+### Change Directory
+```cd python-sqlite```
+
 ### Export 
 ```export FLASK_APP=app.py```
 
