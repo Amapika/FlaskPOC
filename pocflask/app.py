@@ -12,7 +12,7 @@ class User1(db.Model):
     email = db.Column(db.String(200))
     password = db.Column(db.String(200))
 
-@app.route('/delete/<int:id>')
+@app.route('/user/delete/<int:id>')
 def delete(id):
     task_to_delete = User1.query.get_or_404(id)
     db.session.delete(task_to_delete)
@@ -20,7 +20,7 @@ def delete(id):
     return redirect('/')
 
 
-@app.route('/update/<int:id>',methods=["GET","POST"])
+@app.route('/user/update/<int:id>',methods=["GET","POST"])
 def update(id):
     user = User1.query.get_or_404(id)
     if request.method == 'POST':

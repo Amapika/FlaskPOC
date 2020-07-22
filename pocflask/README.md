@@ -23,6 +23,7 @@ Simple Python Application For CRUD operations through SQLite.
 ``` pip install```
 ### Start Server
 ```flask run```
+### Requirement
 
 ### DEMO 
 https://github.com/Amapika/FlaskPOC/blob/master/pocflask/AmanFlask.png
