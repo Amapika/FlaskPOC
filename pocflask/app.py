@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect,url_for
 from flask_sqlalchemy import SQLAlchemy 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"]="sqlite:///mydb.db"
@@ -12,12 +12,12 @@ class User1(db.Model):
     email = db.Column(db.String(200))
     password = db.Column(db.String(200))
 
-@app.route('/user/delete/<int:id>')
+@app.route('/user/<int:id>')
 def delete(id):
     task_to_delete = User1.query.get_or_404(id)
     db.session.delete(task_to_delete)
     db.session.commit()
-    return redirect('/')
+    return redirect('/')  
 
 
 @app.route('/user/update/<int:id>',methods=["GET","POST"])
@@ -34,6 +34,26 @@ def update(id):
         user1s = User1.query.all()
         page ='updatehome'
         return render_template('home.html',page=page,user1s=user1s,user=user)
+
+# @app.route('/user/<int:id>',methods=["GET","POST","PUT","DELETE"])
+# def update(id):
+#     user = User1.query.get_or_404(id)
+#     if request.method == 'PUT':
+#         user.firstname = request.form['firstname']
+#         user.lastname = request.form['lastname']
+#         user.email = request.form['email']
+#         user.password = request.form['password']
+#         db.session.commit()
+#         return redirect('/')
+#     elif request.method == 'DELETE':
+#         task_to_delete = User1.query.get_or_404(id)
+#         db.session.delete(task_to_delete)
+#         db.session.commit()
+#         return redirect('/')
+#     else:
+#         user1s = User1.query.all()
+#         page ='updatehome'
+#         return render_template('home.html',page=page,user1s=user1s,user=user)
 
 @app.route('/',methods=['GET','POST'])
 def get():

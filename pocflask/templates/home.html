@@ -24,7 +24,7 @@
             </div>
             <div class="form-group">
                 <label for="">Password</label>
-                <input type="text" name="password" class="form-control" value={{user.password}}>
+                <input type="password" name="password" class="form-control" value={{user.password}}>
             </div>
         
         <button class="btn btn-block btn-dark">Submit</button>       
@@ -39,7 +39,6 @@
                 <th>Password</th>
                 <th>Delete</th>
                 <th>Update</th>
-
             </thead>
             <tbody>
                 {% for i in user1s %}
@@ -49,12 +48,12 @@
                     <td>{{ i.email }}</td>
                     <td>{{ i.password }}</td>
                     <td>
-                        <a href='/user/delete/{{i.id}}' class="btn btn-sm btn-dark">Delete</a>
+                        <a href="{{ url_for('.delete',id=i.id)}}" class="btn btn-sm btn-dark">Delete</a>
+                        <!-- <a href='/user/delete/{{i.id}}' class="btn btn-sm btn-dark">Delete</a> -->
                     </td>
                     <td>
-                        <a href='/user/update/{{i.id}}' class="btn btn-sm btn-dark">Update</a>
+                        <a href="{{ url_for('.update',id=i.id)}}" class="btn btn-sm btn-dark">Update</a>
                     </td>
-
                 </tr>
                 {% endfor %}
             </tbody>
